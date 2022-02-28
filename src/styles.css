@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Kings&family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans:wght@300;400;700&display=swap');
+
+/* font-family: 'Kings', cursive;
+font-family: 'Public Sans', sans-serif;
+font-family: 'Work Sans', sans-serif; */
+
+:root {
+    --main-bg-color: rgb(8, 140, 190);
+    --main-bg-color-dark: rgb(9, 120, 160);
+    --main-bg-color-t: rgb(8, 139, 190, 0.8);
+    --secondary-bg-color: rgb(204, 204, 204);
+    --secondary-bg-color-t: rgb(204, 204, 204, 0.5);
+    --main-text-color: #fdfdfd;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Modificación estilos Bootstrap */
+.btn-primary {
+    color: #fff;
+    background-color: var(--main-bg-color);    
+}
+
+.btn-primary:hover {
+    background-color: var(--main-bg-color-dark);
+}

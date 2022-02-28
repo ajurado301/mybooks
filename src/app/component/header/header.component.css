@@ -1,0 +1,36 @@
+.cabecera {
+    display: flex;
+    align-items: center;
+    font-family: 'Kings', cursive;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    height: 100px;
+    padding: .5rem 2rem;
+
+}
+
+.imglogo {   
+    height: 50px;
+    width: auto;
+    margin-right: 20px;
+}
+
+.textlogo{
+    font-size: 2.5rem;
+}
+
+.navegacion {
+    margin-left: auto;
+}
+
+.navegacion a {
+    font-family: 'Work Sans', sans-serif;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: rgb(230, 230, 230);
+    margin-left: 1.2rem;
+}
+
+.navegacion a:hover {
+    color: var(--main-text-color);
+}

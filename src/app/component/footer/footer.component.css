@@ -1,0 +1,24 @@
+.pie {
+    display: flex;
+    align-items: center;
+    font-family: 'Work Sans', sans-serif;
+    background-color: var(--secondary-bg-color);
+    height: 80px;
+    padding: 0 2rem;
+
+}
+
+.pie p {
+    align-self: end;
+    margin-left: auto;
+    margin-bottom: 0.5rem;
+}
+
+.pie a {
+    margin-right: 1.2rem;
+}
+
+.pie img {
+    height: 50px;
+    width: auto;
+}
