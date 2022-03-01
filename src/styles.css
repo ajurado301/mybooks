@@ -9,7 +9,7 @@ font-family: 'Work Sans', sans-serif; */
     --main-bg-color-dark: rgb(9, 120, 160);
     --main-bg-color-t: rgb(8, 139, 190, 0.8);
     --secondary-bg-color: rgb(204, 204, 204);
-    --secondary-bg-color-t: rgb(204, 204, 204, 0.5);
+    --secondary-bg-color-t: rgb(32, 32, 32, .9);
     --main-text-color: #fdfdfd;
 }
 
@@ -18,6 +18,14 @@ font-family: 'Work Sans', sans-serif; */
     padding: 0;
     box-sizing: border-box;
     font-family: 'Work Sans', sans-serif;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: calc(100vh - 80px);
 }
 
 /* Modificación estilos Bootstrap */

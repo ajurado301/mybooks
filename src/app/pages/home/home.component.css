@@ -1,19 +1,12 @@
-.inicio {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: calc(100vh - 80px);
-    color: var(--main-text-color);
-}
-
 .informacion {
-    background-color: var(--main-bg-color-t);
+    color: var(--main-text-color);
+    background-color: var(--secondary-bg-color-t);
     padding: 20px;
     border-radius: 25px;
     width: 30%;
     height: auto;
     text-align: center;
+    border: 1px solid gray;
 }
 
 .informacion h1 {

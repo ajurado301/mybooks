@@ -1,0 +1,21 @@
+.perfil {
+    color: var(--main-text-color);
+    background-color: var(--secondary-bg-color-t);
+    border-radius: 25px;
+    width: 50%;
+    height: auto;
+    text-align: center;
+    border: 1px solid gray;
+}
+
+.perfil img {
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+    text-align: center;
+}
+
+/* Estilos modificados de bootstrap */
+.form-control:disabled, .form-control[readonly] {
+    background-color: white;
+}

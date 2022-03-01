@@ -1,0 +1,43 @@
+<main class="contenedor">
+
+    <div class="row perfil p-4">
+
+        <div class="col-6 pe-4">
+            <img src="../../../assets/img/foto.jpg" alt="Foto perfil">
+            <hr>
+
+            <h4><i class="fa-solid fa-user me-3"></i>{{usuarioPerfil.nombre + ' ' + usuarioPerfil.apellidos}}</h4>
+            <hr>
+            <div class="input-group mb-3">
+                <span class="input-group-text w-25">Nombre</span>
+                <input type="text" class="form-control" [value]="usuarioPerfil.nombre" readonly>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text w-25">Apellidos</span>
+                <input type="text" class="form-control" [value]="usuarioPerfil.apellidos" readonly>
+            </div>
+            <div class="input-group">
+                <span class="input-group-text w-25">Correo</span>
+                <input type="text" class="form-control" [value]="usuarioPerfil.correo" readonly>
+            </div>
+        </div>
+        
+        <div class="col-6 pt-3 ps-4 border-start border-1 border-success">
+            <div class="mx-4 mb-4 border-bottom border-3">
+                <h3>Editar perfil</h3>
+            </div>
+            <form>
+                <input #nombre type="text" class="form-control text-center mb-3" placeholder="Nombre">
+                <input #apellidos type="text" class="form-control text-center mb-3" placeholder="Apellidos">
+                <input #correo type="email" class="form-control text-center mb-3" placeholder="Correo">
+                <input #url type="text" class="form-control text-center mb-3" placeholder="Url foto">
+                <input #password type="password" class="form-control text-center mb-3" placeholder="Contraseña">
+                <button type="reset" (click)="modificar(nombre.value, apellidos.value, correo.value, url.value, password.value)"
+                    class="btn btn-success mb-2 w-75">Modificar</button>
+            </form>
+            <p [style.color]="colorMensaje" [hidden]="ocultarMensaje">{{mensaje}}</p>
+        </div>
+
+    </div>
+
+</main>
