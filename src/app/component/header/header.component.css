@@ -1,9 +1,11 @@
 .cabecera {
     display: flex;
     align-items: center;
+    position: fixed;
     font-family: 'Kings', cursive;
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
+    width: 100vw;
     height: 100px;
     padding: .5rem 2rem;
 
@@ -24,7 +26,6 @@
 }
 
 .navegacion a {
-    font-family: 'Work Sans', sans-serif;
     text-decoration: none;
     font-size: 1.2rem;
     color: rgb(230, 230, 230);
