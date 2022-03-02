@@ -1,0 +1,9 @@
+.libro {
+    color: var(--main-text-color);
+    background-color: var(--secondary-bg-color-t);
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    margin: 0 2rem;
+    border: 1px solid gray;
+}

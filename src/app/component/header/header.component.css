@@ -1,7 +1,6 @@
 .cabecera {
     display: flex;
     align-items: center;
-    position: fixed;
     font-family: 'Kings', cursive;
     background-color: var(--main-bg-color);
     color: var(--main-text-color);

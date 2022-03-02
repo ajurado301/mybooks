@@ -9,6 +9,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { FormularioRegistroComponent } from './component/formulario-registro/formulario-registro.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { LibrosComponent } from './pages/libros/libros.component';
+import { RefPipe } from './pipes/ref.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
     HomeComponent,
     RegistroComponent,
     FormularioRegistroComponent,
-    PerfilComponent
+    PerfilComponent,
+    LibrosComponent,
+    RefPipe
   ],
   imports: [
     BrowserModule,

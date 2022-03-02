@@ -14,7 +14,7 @@ export class PerfilComponent implements OnInit {
   public colorMensaje : string;
 
   constructor() { 
-    this.usuarioPerfil = new Usuario('Ander', 'Jurado Rodríguez', 'ajurado301@gmail.com', '../../../assets/img/foto.jpg', 'P@ssw0rd', 1);
+    this.usuarioPerfil = new Usuario('Ander', 'Jurado Rodríguez', 'ajurado301@gmail.com', '../../../assets/img/foto.jpg', 'P@ssw0rd', 0);
     this.ocultarMensaje = true;
   }
 
