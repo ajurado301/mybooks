@@ -4,7 +4,7 @@
             <h4>En este momento no hay libros</h4>
         </div>
         <ng-template #cards>
-            <div class="col-9 d-flex flex-wrap align-items-center gap-3">
+            <div class="col-9 d-flex flex-wrap gap-3">
                 <ng-container *ngFor="let libro of libros; let even = even">
                     <div class="card" style="width: 18rem;">
                         <img [src]="libro.photo" class="card-img-top" alt="Nunca">
@@ -14,7 +14,7 @@
                             <p class="card-text my-0"><b>Autor: </b>{{libro.autor}}</p>
                             <p class="card-text my-0">{{libro.id_libro | ref}}</p>
                             <h5 class="text-center mt-2 mb-1"><b>{{libro.precio}}€</b></h5>
-                            <button type="button" class="btn w-100" [ngClass]="even ? 'btn-success' : 'btn-dark'">Comprar</button>
+                            <button type="button" class="btn w-100" [ngClass]="even ? 'btn-primary' : 'btn-dark'">Comprar</button>
                         </div>
                     </div>
                 </ng-container>

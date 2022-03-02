@@ -1,9 +1,0 @@
-.perfil {
-    color: var(--main-text-color);
-    background-color: var(--main-bg-color-t);
-    padding: 20px;
-    border-radius: 25px;
-    width: 30%;
-    height: auto;
-    text-align: center;
-}

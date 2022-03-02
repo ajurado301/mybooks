@@ -15,7 +15,16 @@ export class LibrosComponent implements OnInit {
 
     // Para empezar con libros
     this.libros.push(new Libro('Nunca', 'Tapa dura', 'Ken Follet', 35, '../../../assets/img/libros/nunca.png', 203075));
+    this.libros.push(new Libro('Nunca', 'Tapa dura', 'Ken Follet', 35, '../../../assets/img/libros/nunca.png', 203075));
+    this.libros.push(new Libro('Nunca', 'Tapa dura', 'Ken Follet', 35, '../../../assets/img/libros/nunca.png', 203075));
+    this.libros.push(new Libro('Nunca', 'Tapa dura', 'Ken Follet', 35, '../../../assets/img/libros/nunca.png', 203075));
     this.libros.push(new Libro('Origen', 'Tapa blanda', 'Dan Brown', 17, '../../../assets/img/libros/origen.png', 387256));
+    this.libros.push(new Libro('Origen', 'Tapa blanda', 'Dan Brown', 17, '../../../assets/img/libros/origen.png', 387256));
+    this.libros.push(new Libro('Origen', 'Tapa blanda', 'Dan Brown', 17, '../../../assets/img/libros/origen.png', 387256));
+    this.libros.push(new Libro('Origen', 'Tapa blanda', 'Dan Brown', 17, '../../../assets/img/libros/origen.png', 387256));
+    this.libros.push(new Libro('El resplandor', 'Tapa dura', 'Stephen King', 27, '../../../assets/img/libros/resplandor.png', 847182));
+    this.libros.push(new Libro('El resplandor', 'Tapa dura', 'Stephen King', 27, '../../../assets/img/libros/resplandor.png', 847182));
+    this.libros.push(new Libro('El resplandor', 'Tapa dura', 'Stephen King', 27, '../../../assets/img/libros/resplandor.png', 847182));
     this.libros.push(new Libro('El resplandor', 'Tapa dura', 'Stephen King', 27, '../../../assets/img/libros/resplandor.png', 847182));
   }
 

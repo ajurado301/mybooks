@@ -1,9 +1,8 @@
 .libro {
-    color: var(--main-text-color);
-    background-color: var(--secondary-bg-color-t);
+    color: var(--secondary-text-color);
+    background-color: var(--secondary-bg-color);
     border-radius: 10px;
-    width: 100%;
-    height: auto;
-    margin: 0 2rem;
+    width: 100%;    
+    box-shadow: .5rem .5rem 2rem rgba(0, 0, 0, .3);
     border: 1px solid gray;
 }

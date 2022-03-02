@@ -7,10 +7,11 @@ font-family: 'Work Sans', sans-serif; */
 :root {
     --main-bg-color: rgb(8, 140, 190);
     --main-bg-color-dark: rgb(9, 120, 160);
-    --main-bg-color-t: rgb(8, 139, 190, 0.8);
-    --secondary-bg-color: rgb(204, 204, 204);
-    --secondary-bg-color-t: rgb(32, 32, 32, .9);
+    --main-bg-color-t: rgb(8, 140, 190, 0.8);
+    --secondary-bg-color: #f0f0f0;
+    --secondary-bg-color-dark: #e0e0e0;
     --main-text-color: #fdfdfd;
+    --secondary-text-color: #333333;
 }
 
 * {
@@ -23,9 +24,8 @@ font-family: 'Work Sans', sans-serif; */
 .contenedor {
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: calc(100vh - 180px);
+    padding: calc(100px + 2%) 2% calc(80px + 2%) 2%;
+    width: 100%;
 }
 
 /* Modificación estilos Bootstrap */
@@ -38,8 +38,8 @@ font-family: 'Work Sans', sans-serif; */
     background-color: var(--main-bg-color-dark);
 }
 
-.container-fluid {    
+/* body {
     background-image: url('./assets/img/background.jpg');
     background-size: cover;
-    background-repeat:no-repeat;    
-}
+    background-repeat: no-repeat;    
+} */
