@@ -11,6 +11,7 @@ import { FormularioRegistroComponent } from './component/formulario-registro/for
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { LibrosComponent } from './pages/libros/libros.component';
 import { RefPipe } from './pipes/ref.pipe';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RefPipe } from './pipes/ref.pipe';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ToastrModule
   ],
   providers: [],
   bootstrap: [AppComponent]

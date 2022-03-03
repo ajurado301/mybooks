@@ -37,9 +37,3 @@ font-family: 'Work Sans', sans-serif; */
 .btn-primary:hover {
     background-color: var(--main-bg-color-dark);
 }
-
-/* body {
-    background-image: url('./assets/img/background.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;    
-} */

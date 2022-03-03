@@ -23,9 +23,14 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/css/bootstrap.min.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/scripts/fontawesome.js",
+              "src/assets/scripts/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
