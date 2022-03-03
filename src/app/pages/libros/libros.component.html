@@ -1,39 +1,72 @@
 <main class="contenedor">
     <div class="row libro p-4">
-        <div *ngIf="libros.length == 0; else cards" class="col-9 d-flex justify-content-center align-items-center">
-            <h4>En este momento no hay libros</h4>
+        <div class="col-9 d-flex justify-content-center">
+            <div class="input-group text-center mb-3 w-25">
+                <input #idbuscar type="number" class="form-control text-center" placeholder="Buscar por id">
+                <a (click)="buscarLibro(idbuscar.value)" class="input-group-text"
+                    style="text-decoration: none; cursor: pointer;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </div>
         </div>
-        <ng-template #cards>
-            <div class="col-9 d-flex flex-wrap gap-3">
+        <div class="col-9 d-flex flex-wrap gap-3 justify-content-center align-items-center">
+            <ng-container *ngIf="libros.length == 0; else cards">
+                <h4>No se ha encontrado ningún libro</h4>
+            </ng-container>
+
+            <ng-template #cards>
                 <ng-container *ngFor="let libro of libros; let even = even">
-                    <div class="card" style="width: 18rem;">
-                        <img [src]="libro.photo" class="card-img-top" alt="Nunca">
+                    <div class="card" style="width: 18rem; height: 30rem;">
+                        <img [src]="libro.photo" class="card-img-top" alt="Foto libro">
                         <div class="card-body text-dark pt-1">
                             <small class="my-0">{{libro.tipoLibro}}</small>
                             <h5 class="card-title border-top border-success my-0 text-success">{{libro.titulo}}</h5>
                             <p class="card-text my-0"><b>Autor: </b>{{libro.autor}}</p>
                             <p class="card-text my-0">{{libro.id_libro | ref}}</p>
                             <h5 class="text-center mt-2 mb-1"><b>{{libro.precio}}€</b></h5>
-                            <button type="button" class="btn w-100" [ngClass]="even ? 'btn-primary' : 'btn-dark'">Comprar</button>
+                            <div class="d-flex">
+                                <button type="button" class="btn" style="width: 80%;"
+                                    [ngClass]="even ? 'btn-primary' : 'btn-dark'">Comprar</button>
+                                <button (click)="borrarLibro(libro.id_libro)" type="button"
+                                    class="btn btn-danger ms-auto">
+                                    <i class="fa-solid fa-x"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </ng-container>
-            </div>
-        </ng-template>
-        <div class="col-3 pt-4 ps-4 border-start border-1 border-success text-center">
-            <div class="mx-4 mb-4 border-bottom border-3">
+            </ng-template>
+        </div>
+
+        <div class="col-3 ps-4 border-start border-1 border-success text-center">
+            <div class="mx-4 mb-3 border-bottom border-3">
                 <h3>Agregar libro</h3>
             </div>
             <form>
-                <input #titulo type="text" class="form-control text-center mb-3" placeholder="Título">
-                <input #tipo type="text" class="form-control text-center mb-3" placeholder="Tapa blanda/dura">
-                <input #autor type="text" class="form-control text-center mb-3" placeholder="Autor">
-                <input #precio type="number" class="form-control text-center mb-3" placeholder="Precio">
-                <input #photo type="text" class="form-control text-center mb-3" placeholder="Photo">
-                <input #codigo type="number" class="form-control text-center mb-3" placeholder="Código libro">
+                <input #tituloAgregar type="text" class="form-control text-center mb-3" placeholder="Título">
+                <input #tipoAgregar type="text" class="form-control text-center mb-3" placeholder="Tapa blanda/dura">
+                <input #autorAgregar type="text" class="form-control text-center mb-3" placeholder="Autor">
+                <input #precioAgregar type="number" class="form-control text-center mb-3" placeholder="Precio">
+                <input #photoAgregar type="text" class="form-control text-center mb-3" placeholder="Photo">
+                <input #codigoAgregar type="number" class="form-control text-center mb-3" placeholder="Código libro">
                 <button
-                    (click)="agregarLibro(titulo.value, tipo.value, autor.value, precio.value, photo.value, codigo.value)"
-                    type="reset" class="btn btn-success mb-2 w-75">Agregar</button>
+                    (click)="agregarLibro(tituloAgregar.value, tipoAgregar.value, autorAgregar.value, precioAgregar.value, photoAgregar.value, codigoAgregar.value)"
+                    type="reset" class="btn btn-success w-75">Agregar Libro</button>
+            </form>
+            <hr>
+            <div class="mx-4 mb-3 border-bottom border-3">
+                <h3>Modificar libro</h3>
+            </div>
+            <form>
+                <input #tituloModificar type="text" class="form-control text-center mb-3" placeholder="Título">
+                <input #tipoModificar type="text" class="form-control text-center mb-3" placeholder="Tapa blanda/dura">
+                <input #autorModificar type="text" class="form-control text-center mb-3" placeholder="Autor">
+                <input #precioModificar type="number" class="form-control text-center mb-3" placeholder="Precio">
+                <input #photoModificar type="text" class="form-control text-center mb-3" placeholder="Photo">
+                <input #codigoModificar type="number" class="form-control text-center mb-3" placeholder="Código libro">
+                <button
+                    (click)="modificarLibro(tituloModificar.value, tipoModificar.value, autorModificar.value, precioModificar.value, photoModificar.value, codigoModificar.value)"
+                    type="reset" class="btn btn-success w-75">Modificar Libro</button>
             </form>
         </div>
     </div>

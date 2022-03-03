@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Libro } from '../../models/libro';
+import { LibrosService } from '../../shared/libros.service';
 
 @Component({
   selector: 'app-libros',
@@ -10,29 +11,37 @@ export class LibrosComponent implements OnInit {
 
   public libros: Libro[];
 
-  constructor() { 
-    this.libros = [];
-
-    // Para empezar con libros
-    this.libros.push(new Libro('Nunca', 'Tapa dura', 'Ken Follet', 35, '../../../assets/img/libros/nunca.png', 203075));
-    this.libros.push(new Libro('Nunca', 'Tapa dura', 'Ken Follet', 35, '../../../assets/img/libros/nunca.png', 203075));
-    this.libros.push(new Libro('Nunca', 'Tapa dura', 'Ken Follet', 35, '../../../assets/img/libros/nunca.png', 203075));
-    this.libros.push(new Libro('Nunca', 'Tapa dura', 'Ken Follet', 35, '../../../assets/img/libros/nunca.png', 203075));
-    this.libros.push(new Libro('Origen', 'Tapa blanda', 'Dan Brown', 17, '../../../assets/img/libros/origen.png', 387256));
-    this.libros.push(new Libro('Origen', 'Tapa blanda', 'Dan Brown', 17, '../../../assets/img/libros/origen.png', 387256));
-    this.libros.push(new Libro('Origen', 'Tapa blanda', 'Dan Brown', 17, '../../../assets/img/libros/origen.png', 387256));
-    this.libros.push(new Libro('Origen', 'Tapa blanda', 'Dan Brown', 17, '../../../assets/img/libros/origen.png', 387256));
-    this.libros.push(new Libro('El resplandor', 'Tapa dura', 'Stephen King', 27, '../../../assets/img/libros/resplandor.png', 847182));
-    this.libros.push(new Libro('El resplandor', 'Tapa dura', 'Stephen King', 27, '../../../assets/img/libros/resplandor.png', 847182));
-    this.libros.push(new Libro('El resplandor', 'Tapa dura', 'Stephen King', 27, '../../../assets/img/libros/resplandor.png', 847182));
-    this.libros.push(new Libro('El resplandor', 'Tapa dura', 'Stephen King', 27, '../../../assets/img/libros/resplandor.png', 847182));
+  constructor(private ls: LibrosService) { 
+    this.libros = this.ls.getAll();
   }
 
   ngOnInit(): void {
   }
 
-  agregarLibro(titulo: string, tipo: string, autor: string, precio: number, photo: string, codigo: number) {
-    let nuevoLibro = new Libro(titulo, tipo, autor, precio, photo, codigo);
-    this.libros.push(nuevoLibro)
+  agregarLibro(titulo: string, tipo: string, autor: string, precio: number, photo: string, codigo: number): void {
+    let libro = new Libro(titulo, tipo, autor, precio, photo, codigo);
+    this.ls.add(libro);
+  }
+
+  modificarLibro(titulo: string, tipo: string, autor: string, precio: number, photo: string, codigo: number): void {
+    let libro = new Libro(titulo, tipo, autor, precio, photo, codigo);
+    this.ls.edit(libro);
+  }
+
+  buscarLibro(id_libro: number): void {
+    if(!id_libro) {
+      this.libros = this.ls.getAll()
+    } else {
+      let libro: Libro = this.ls.getOne(id_libro);
+      if (!libro) {
+        this.libros = [];
+      } else {
+        this.libros = [libro]
+      }
+    }
+  }
+  borrarLibro(id_libro: number): void {
+    this.ls.delete(id_libro);
+    this.libros = this.ls.getAll();
   }
 }
