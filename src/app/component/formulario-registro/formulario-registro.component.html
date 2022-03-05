@@ -2,31 +2,33 @@
     <h3>Formulario de registro</h3>
     <hr>
     <div class="mb-2">
-        <label for="reg-nombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="reg-nombre">
+        <label for="nombreRegistro" class="form-label">Nombre</label>
+        <input #nombreRegistro id="nombreRegistro" type="text" class="form-control">
     </div>
     <div class="mb-2">
-        <label for="reg-apellidos" class="form-label">Apellidos</label>
-        <input type="text" class="form-control" id="reg-apellidos">
+        <label for="apellidosRegistro" class="form-label">Apellidos</label>
+        <input #apellidosRegistro id="apellidosRegistro" type="text" class="form-control">
     </div>
     <div class="mb-2">
-        <label for="reg-email" class="form-label">Correo</label>
-        <input type="email" class="form-control" id="reg-email">
+        <label for="correoRegistro" class="form-label">Correo</label>
+        <input #correoRegistro id="correoRegistro" type="email" class="form-control">
     </div>
     <div class="mb-2">
-        <label for="reg-url" class="form-label">URL</label>
-        <input type="text" class="form-control" id="reg-url">
+        <label for="urlRegistro" class="form-label">URL</label>
+        <input #urlRegistro id="urlRegistro" type="text" class="form-control">
     </div>
     <div class="mb-2">
-        <label for="reg-password" class="form-label">Contraseña</label>
-        <input type="password" class="form-control" id="reg-password">
+        <label for="passwordRegistro" class="form-label">Contraseña</label>
+        <input #passwordRegistro id="passwordRegistro" type="password" class="form-control">
     </div>
     <div class="mb-2">
-        <label for="reg-password2" class="form-label">Repetir contraseña</label>
-        <input type="password" class="form-control" id="reg-password2">
+        <label for="password2Registro2" class="form-label">Repetir contraseña</label>
+        <input #passwordRegistro2 id="password2Registro2" type="password" class="form-control">
     </div>
     <div class="d-flex mt-2">
-        <button type="button" class="btn btn-primary w-25">Enviar</button>
-        <button routerLink="/" type="submit" class="btn btn-warning w-25 ms-auto">Cancelar</button>
+        <button (click)="registro(nombreRegistro.value, apellidosRegistro.value, correoRegistro.value,
+                                  urlRegistro.value, passwordRegistro.value, passwordRegistro2.value)"
+                type="reset" class="btn btn-primary w-25">Registrar</button>
+        <button routerLink="/" type="button" class="btn btn-warning w-25 ms-auto">Cancelar</button>
     </div>
 </form>

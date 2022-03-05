@@ -16,7 +16,7 @@
 
             <ng-template #cards>
                 <ng-container *ngFor="let libro of libros; let even = even">
-                    <div class="card" style="width: 18rem; height: 30rem;">
+                    <div (click)="activarLibroAmodificar(libro)" class="card" style="width: 18rem; height: 30rem;">
                         <img [src]="libro.photo" class="card-img-top" alt="Foto libro">
                         <div class="card-body text-dark pt-1">
                             <small class="my-0">{{libro.tipoLibro}}</small>
@@ -27,10 +27,12 @@
                             <div class="d-flex">
                                 <button type="button" class="btn" style="width: 80%;"
                                     [ngClass]="even ? 'btn-primary' : 'btn-dark'">Comprar</button>
-                                <button (click)="borrarLibro(libro.id_libro)" type="button"
-                                    class="btn btn-danger ms-auto">
-                                    <i class="fa-solid fa-x"></i>
+                                <button (click)="confirmarEliminar(libro.id_libro)" type="button"
+                                    class="btn btn-danger ms-auto" data-bs-toggle="modal"
+                                    data-bs-target="#eliminar-modal">
+                                    X
                                 </button>
+
                             </div>
                         </div>
                     </div>
@@ -58,7 +60,7 @@
                 <h3>Modificar libro</h3>
             </div>
             <form>
-                <input #tituloModificar type="text" class="form-control text-center mb-3" placeholder="Título">
+                <input #tituloModificar type="text" class="form-control text-center mb-3" placeholder="Título" [value]="libroAmodificar.titulo">
                 <input #tipoModificar type="text" class="form-control text-center mb-3" placeholder="Tapa blanda/dura">
                 <input #autorModificar type="text" class="form-control text-center mb-3" placeholder="Autor">
                 <input #precioModificar type="number" class="form-control text-center mb-3" placeholder="Precio">
@@ -71,3 +73,22 @@
         </div>
     </div>
 </main>
+
+<!-- Modal para eliminar -->
+<div class="modal" id="eliminar-modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger">Atención</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Confirme el borrado del libro con id {{eliminar_id_libro}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button (click)="borrarLibro(eliminar_id_libro)" type="button" class="btn btn-danger" data-bs-dismiss="modal">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>

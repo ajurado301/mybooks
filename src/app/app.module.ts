@@ -7,11 +7,19 @@ import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RegistroComponent } from './pages/registro/registro.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
+import { HttpClientModule } from '@angular/common/http';
+
+import { RefPipe } from './pipes/ref.pipe';
+
 import { FormularioRegistroComponent } from './component/formulario-registro/formulario-registro.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { LibrosComponent } from './pages/libros/libros.component';
-import { RefPipe } from './pipes/ref.pipe';
-import { ToastrModule } from 'ngx-toastr';
+import { LoginComponent } from './pages/login/login.component';
+import { FormularioLoginComponent } from './component/formulario-login/formulario-login.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +31,16 @@ import { ToastrModule } from 'ngx-toastr';
     FormularioRegistroComponent,
     PerfilComponent,
     LibrosComponent,
-    RefPipe
+    RefPipe,
+    LoginComponent,
+    FormularioLoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ToastrModule
+    HttpClientModule,
+    BrowserAnimationsModule,    
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

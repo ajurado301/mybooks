@@ -3,22 +3,22 @@
     <div class="row perfil p-4">
 
         <div class="col-6 pe-4">
-            <img src="../../../assets/img/foto.jpg" alt="Foto perfil">
+            <img [src]="us.usuario.url" alt="Foto perfil">
             <hr>
 
-            <h4><i class="fa-solid fa-user me-3"></i>{{usuarioPerfil.nombre + ' ' + usuarioPerfil.apellidos}}</h4>
+            <h4><i class="fa-solid fa-user me-3"></i>{{us.usuario.nombre + ' ' + us.usuario.apellidos}}</h4>
             <hr>
             <div class="input-group mb-3">
                 <span class="input-group-text w-25">Nombre</span>
-                <input type="text" class="form-control" [value]="usuarioPerfil.nombre" readonly>
+                <input type="text" class="form-control" [value]="us.usuario.nombre" readonly>
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text w-25">Apellidos</span>
-                <input type="text" class="form-control" [value]="usuarioPerfil.apellidos" readonly>
+                <input type="text" class="form-control" [value]="us.usuario.apellidos" readonly>
             </div>
             <div class="input-group">
                 <span class="input-group-text w-25">Correo</span>
-                <input type="text" class="form-control" [value]="usuarioPerfil.correo" readonly>
+                <input type="text" class="form-control" [value]="us.usuario.correo" readonly>
             </div>
         </div>
         

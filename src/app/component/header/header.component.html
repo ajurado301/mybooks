@@ -3,8 +3,10 @@
         <label class="textlogo">MyBooks</label>
         <nav class="navegacion">
             <a routerLink="/home">Home</a>
-            <a routerLink="/libros">Libros</a>
-            <a routerLink="/perfil">Perfil</a>
+            <a *ngIf="us.logueado" routerLink="/libros">Libros</a>
+            <a *ngIf="us.logueado" routerLink="/perfil">Perfil</a>
             <a routerLink="/registro">Registro</a>
+            <a *ngIf="!us.logueado" routerLink="/login">Login</a>
+            <a *ngIf="us.logueado" (click)="logout()" routerLink="/home">Logout</a>
         </nav>
 </header>

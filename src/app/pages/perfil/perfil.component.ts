@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../models/usuario';
+import { UsuarioService } from '../../shared/usuario.service';
 
 @Component({
   selector: 'app-perfil',
@@ -13,8 +14,8 @@ export class PerfilComponent implements OnInit {
   public ocultarMensaje : boolean;
   public colorMensaje : string;
 
-  constructor() { 
-    this.usuarioPerfil = new Usuario('Ander', 'Jurado Rodríguez', 'ajurado301@gmail.com', '../../../assets/img/foto.jpg', 'P@ssw0rd', 0);
+  constructor(public us: UsuarioService) { 
+    this.usuarioPerfil = new Usuario('Ander', 'Jurado Rodríguez', 'ajurado301@gmail.com', '../../../assets/img/01.png', 'P@ssw0rd', 0);
     this.ocultarMensaje = true;
   }
 
