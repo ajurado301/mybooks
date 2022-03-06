@@ -3,7 +3,7 @@
     <div class="row perfil p-4">
 
         <div class="col-6 pe-4">
-            <img [src]="us.usuario.url" alt="Foto perfil">
+            <img [src]="us.usuario.url" onerror="this.src = '../../../assets/img/noimage.png';" alt="Foto perfil">
             <hr>
 
             <h4><i class="fa-solid fa-user me-3"></i>{{us.usuario.nombre + ' ' + us.usuario.apellidos}}</h4>
@@ -27,15 +27,14 @@
                 <h3>Editar perfil</h3>
             </div>
             <form>
-                <input #nombre type="text" class="form-control text-center mb-3" placeholder="Nombre">
-                <input #apellidos type="text" class="form-control text-center mb-3" placeholder="Apellidos">
-                <input #correo type="email" class="form-control text-center mb-3" placeholder="Correo">
-                <input #url type="text" class="form-control text-center mb-3" placeholder="Url foto">
-                <input #password type="password" class="form-control text-center mb-3" placeholder="Contraseña">
-                <button type="reset" (click)="modificar(nombre.value, apellidos.value, correo.value, url.value, password.value)"
+                <input #nombre type="text" class="form-control text-center mb-3" placeholder="Nombre" [value]="us.usuario.nombre">
+                <input #apellidos type="text" class="form-control text-center mb-3" placeholder="Apellidos" [value]="us.usuario.apellidos">
+                <input #correo type="email" class="form-control text-center mb-3" placeholder="Correo" [value]="us.usuario.correo">
+                <input #url type="text" class="form-control text-center mb-3" placeholder="Url foto" [value]="us.usuario.url">
+                <input #password type="password" class="form-control text-center mb-3" placeholder="Contraseña" [value]="us.usuario.password">
+                <button type="button" (click)="modificar(nombre.value, apellidos.value, correo.value, url.value, password.value)"
                     class="btn btn-success mb-2 w-75">Modificar</button>
             </form>
-            <p [style.color]="colorMensaje" [hidden]="ocultarMensaje">{{mensaje}}</p>
         </div>
 
     </div>

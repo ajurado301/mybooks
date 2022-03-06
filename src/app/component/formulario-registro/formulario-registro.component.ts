@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../models/usuario';
 import { NotificacionService } from '../../shared/notificacion.service';
 import { UsuarioService } from '../../shared/usuario.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulario-registro',
@@ -11,7 +12,8 @@ import { UsuarioService } from '../../shared/usuario.service';
 export class FormularioRegistroComponent implements OnInit {
 
   constructor(private ns: NotificacionService,
-              private us: UsuarioService) { }
+              private us: UsuarioService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -28,6 +30,10 @@ export class FormularioRegistroComponent implements OnInit {
         this.us.register(usuarioRegistro)
           .subscribe((respuesta: any) => {
             this.ns.mostrarSuccess(respuesta.message, 'Correcto');
+            this.us.usuario = usuarioRegistro;
+            this.us.usuario.password = '';
+            this.us.logueado = true;
+            this.router.navigate(['/libros'])
           }, (err) => {
             this.ns.mostrarError(err.error.message, 'Error');
           })

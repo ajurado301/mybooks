@@ -28,6 +28,7 @@ export class FormularioLoginComponent implements OnInit {
       .subscribe((respuesta: any) => {
         if (respuesta.ok) {
           this.us.usuario = respuesta.resultado;
+          this.us.usuario.password = '';
           this.us.logueado = true;
           this.ns.mostrarSuccess(respuesta.message, 'Correcto');
           this.router.navigate(['/libros'])

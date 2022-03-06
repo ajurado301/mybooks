@@ -17,9 +17,10 @@
             <ng-template #cards>
                 <ng-container *ngFor="let libro of libros; let even = even">
                     <div (click)="activarLibroAmodificar(libro)" class="card" style="width: 18rem; height: 30rem;">
-                        <img [src]="libro.photo" class="card-img-top" alt="Foto libro">
+                        <img [src]="libro.foto" onerror="this.src = '../../../assets/img/noimage.png';"
+                             class="card-img-top" alt="Foto libro">
                         <div class="card-body text-dark pt-1">
-                            <small class="my-0">{{libro.tipoLibro}}</small>
+                            <small class="my-0">{{libro.tipo}}</small>
                             <h5 class="card-title border-top border-success my-0 text-success">{{libro.titulo}}</h5>
                             <p class="card-text my-0"><b>Autor: </b>{{libro.autor}}</p>
                             <p class="card-text my-0">{{libro.id_libro | ref}}</p>
@@ -49,10 +50,10 @@
                 <input #tipoAgregar type="text" class="form-control text-center mb-3" placeholder="Tapa blanda/dura">
                 <input #autorAgregar type="text" class="form-control text-center mb-3" placeholder="Autor">
                 <input #precioAgregar type="number" class="form-control text-center mb-3" placeholder="Precio">
-                <input #photoAgregar type="text" class="form-control text-center mb-3" placeholder="Photo">
-                <input #codigoAgregar type="number" class="form-control text-center mb-3" placeholder="Código libro">
+                <input #fotoAgregar type="text" class="form-control text-center mb-3" placeholder="foto">
+                <!-- <input #codigoAgregar type="number" class="form-control text-center mb-3" placeholder="Código libro"> -->
                 <button
-                    (click)="agregarLibro(tituloAgregar.value, tipoAgregar.value, autorAgregar.value, precioAgregar.value, photoAgregar.value, codigoAgregar.value)"
+                    (click)="agregarLibro(tituloAgregar.value, tipoAgregar.value, autorAgregar.value, precioAgregar.value, fotoAgregar.value)"
                     type="reset" class="btn btn-success w-75">Agregar Libro</button>
             </form>
             <hr>
@@ -61,13 +62,13 @@
             </div>
             <form>
                 <input #tituloModificar type="text" class="form-control text-center mb-3" placeholder="Título" [value]="libroAmodificar.titulo">
-                <input #tipoModificar type="text" class="form-control text-center mb-3" placeholder="Tapa blanda/dura">
-                <input #autorModificar type="text" class="form-control text-center mb-3" placeholder="Autor">
-                <input #precioModificar type="number" class="form-control text-center mb-3" placeholder="Precio">
-                <input #photoModificar type="text" class="form-control text-center mb-3" placeholder="Photo">
-                <input #codigoModificar type="number" class="form-control text-center mb-3" placeholder="Código libro">
+                <input #tipoModificar type="text" class="form-control text-center mb-3" placeholder="Tapa blanda/dura" [value]="libroAmodificar.tipo">
+                <input #autorModificar type="text" class="form-control text-center mb-3" placeholder="Autor" [value]="libroAmodificar.autor">
+                <input #precioModificar type="number" class="form-control text-center mb-3" placeholder="Precio" [value]="libroAmodificar.precio">
+                <input #fotoModificar type="text" class="form-control text-center mb-3" placeholder="foto" [value]="libroAmodificar.foto">
+                <input #codigoModificar type="number" class="form-control text-center mb-3" placeholder="Código libro" [value]="libroAmodificar.id_libro" readonly>
                 <button
-                    (click)="modificarLibro(tituloModificar.value, tipoModificar.value, autorModificar.value, precioModificar.value, photoModificar.value, codigoModificar.value)"
+                    (click)="modificarLibro(tituloModificar.value, tipoModificar.value, autorModificar.value, precioModificar.value, fotoModificar.value, codigoModificar.value)"
                     type="reset" class="btn btn-success w-75">Modificar Libro</button>
             </form>
         </div>

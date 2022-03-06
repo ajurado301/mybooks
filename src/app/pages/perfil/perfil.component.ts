@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../models/usuario';
 import { UsuarioService } from '../../shared/usuario.service';
+import { NotificacionService } from '../../shared/notificacion.service';
 
 @Component({
   selector: 'app-perfil',
@@ -9,33 +10,24 @@ import { UsuarioService } from '../../shared/usuario.service';
 })
 export class PerfilComponent implements OnInit {
 
-  public usuarioPerfil : Usuario;
-  public mensaje: string;
-  public ocultarMensaje : boolean;
-  public colorMensaje : string;
-
-  constructor(public us: UsuarioService) { 
-    this.usuarioPerfil = new Usuario('Ander', 'Jurado Rodríguez', 'ajurado301@gmail.com', '../../../assets/img/01.png', 'P@ssw0rd', 0);
-    this.ocultarMensaje = true;
-  }
+    constructor(private ns: NotificacionService, public us: UsuarioService) { }
 
   ngOnInit(): void {
   }
 
   modificar(nombre: string, apellidos: string, correo: string, url: string, password: string) {
-    let cambios: boolean = false;
-    if (nombre) { this.usuarioPerfil.nombre = nombre; cambios = true };    
-    if (apellidos) { this.usuarioPerfil.apellidos = apellidos; cambios = true };
-    if (correo) { this.usuarioPerfil.correo = correo; cambios = true };
-    if (url) { this.usuarioPerfil.url = url; cambios = true };
-    if (password) { this.usuarioPerfil.password = password; cambios = true };
-    this.ocultarMensaje = false;
-    if (cambios) {
-      this.mensaje = 'Usuario actualizado';
-      this.colorMensaje = 'lightgreen'
-    } else {
-      this.mensaje = 'No se han detectado cambios';
-      this.colorMensaje = 'red'
-    }
+    let usuarioPerfil = new Usuario(nombre, apellidos, correo, url, password, this.us.usuario.id_usuario);
+    this.us.edit(usuarioPerfil)
+    .subscribe((respuesta: any) => {
+      if (respuesta.ok) {
+        this.ns.mostrarSuccess(respuesta.message, 'Correcto');
+        this.us.usuario = usuarioPerfil;
+        this.us.usuario.password = '';
+      } else {
+        this.ns.mostrarwWarning(respuesta.message, 'Advertencia');
+      }
+    }, (err) => {
+      this.ns.mostrarError(err.error.message, 'Error');
+    })
   }
 }
