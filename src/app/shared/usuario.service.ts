@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
 import { Usuario } from '../models/usuario';
 
 @Injectable({
@@ -14,22 +15,20 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) {
     this.url = 'http://localhost:3000';
-    
-    // TODO: Quitar esto, solo es para empezar logueado
     this.logueado = false;
   }
 
-  register(usuario: Usuario) {
+  register(usuario: Usuario): Observable<Object> {
     let urlRegistro = this.url + '/registro';
     return this.http.post(urlRegistro, usuario);
   }
   
-  login (usuario: Usuario) {
+  login (usuario: Usuario): Observable<Object> {
     let urlLogin = this.url + '/login';
     return this.http.post(urlLogin, usuario);
   }
 
-  edit(usuario: Usuario) {
+  edit(usuario: Usuario): Observable<Object> {
     let urlRegistro = this.url + '/registro';
     return this.http.put(urlRegistro, usuario);
   }
