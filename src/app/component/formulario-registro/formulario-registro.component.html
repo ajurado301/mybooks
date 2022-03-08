@@ -1,34 +1,65 @@
-<form class="registro-form">
+<form #registroForm="ngForm" (ngSubmit)="registro(registroForm)" class="registro-form">
     <h3>Formulario de registro</h3>
     <hr>
+
     <div class="mb-2">
         <label for="nombreRegistro" class="form-label">Nombre</label>
-        <input #nombreRegistro id="nombreRegistro" type="text" class="form-control">
+        <input id="nombreRegistro" type="text" class="form-control" name="nombre" [(ngModel)]="usuario.nombre" #nombre="ngModel"
+               [ngClass]="{ 'is-invalid': (nombre.dirty || nombre.touched) && nombre.invalid }" required>
+        <div class="invalid-feedback" *ngIf="(nombre.dirty || nombre.touched) && nombre.invalid">
+            <small *ngIf="nombre.errors.required">Campo requerido</small>
+        </div>
     </div>
+
     <div class="mb-2">
         <label for="apellidosRegistro" class="form-label">Apellidos</label>
-        <input #apellidosRegistro id="apellidosRegistro" type="text" class="form-control">
+        <input id="apellidosRegistro" type="text" class="form-control" name="apellidos" [(ngModel)]="usuario.apellidos" #apellidos="ngModel"
+               [ngClass]="{ 'is-invalid': (apellidos.dirty || apellidos.touched) && apellidos.invalid }" required>
+        <div class="invalid-feedback" *ngIf="(apellidos.dirty || apellidos.touched) && apellidos.invalid">
+            <small *ngIf="apellidos.errors.required">Campo requerido</small>
+        </div>
     </div>
+
     <div class="mb-2">
         <label for="correoRegistro" class="form-label">Correo</label>
-        <input #correoRegistro id="correoRegistro" type="email" class="form-control">
+        <input id="correoRegistro" type="email" class="form-control" name="correo" [(ngModel)]="usuario.correo" #correo="ngModel"
+               [ngClass]="{ 'is-invalid': (correo.dirty || correo.touched) && correo.invalid }" email required>
+        <div class="invalid-feedback" *ngIf="(correo.dirty || correo.touched) && correo.invalid">
+            <small *ngIf="correo.errors.required">Campo requerido</small>
+            <small *ngIf="correo.errors.email">correo no válido</small>
+        </div>
     </div>
+
     <div class="mb-2">
         <label for="urlRegistro" class="form-label">URL</label>
-        <input #urlRegistro id="urlRegistro" type="text" class="form-control">
+        <input id="urlRegistro" type="text" class="form-control" name="url" [(ngModel)]="usuario.url" #url="ngModel"
+               [ngClass]="{ 'is-invalid': (url.dirty || url.touched) && url.invalid }" required>
+        <div class="invalid-feedback" *ngIf="(url.dirty || url.touched) && url.invalid">
+            <small *ngIf="url.errors.required">Campo requerido</small>
+        </div>    
     </div>
+    
     <div class="mb-2">
         <label for="passwordRegistro" class="form-label">Contraseña</label>
-        <input #passwordRegistro id="passwordRegistro" type="password" class="form-control">
+        <input id="passwordRegistro" type="password" class="form-control" name="password" [(ngModel)]="usuario.password" #password="ngModel"
+               [ngClass]="{ 'is-invalid': (password.dirty || password.touched) && password.invalid }" minlength="8" required>
+        <div class="invalid-feedback" *ngIf="(password.dirty || password.touched) && password.invalid">
+            <small *ngIf="password.errors.required">Campo requerido</small>
+            <small *ngIf="password.errors.minlength">Longitud mínima de 8</small>
+        </div>   
     </div>
+
     <div class="mb-2">
-        <label for="password2Registro2" class="form-label">Repetir contraseña</label>
-        <input #passwordRegistro2 id="password2Registro2" type="password" class="form-control">
+        <label for="password2Registro" class="form-label">Repetir contraseña</label>
+        <input id="password2Registro" type="password" class="form-control" name="password2" [(ngModel)]="password2" #passwordConfirm="ngModel"
+               [ngClass]="{ 'is-invalid': (passwordConfirm.dirty || passwordConfirm.touched) && passwordConfirm.invalid }" minlength="8" required>
+            <div class="invalid-feedback" *ngIf="(passwordConfirm.dirty || passwordConfirm.touched) && passwordConfirm.invalid">
+                <small *ngIf="passwordConfirm.errors.required">Campo requerido</small>
+                <small *ngIf="passwordConfirm.errors.minlength">Longitud mínima de 8</small>
+            </div>        
     </div>
+     
     <div class="d-flex mt-2">
-        <button (click)="registro(nombreRegistro.value, apellidosRegistro.value, correoRegistro.value,
-                                  urlRegistro.value, passwordRegistro.value, passwordRegistro2.value)"
-                type="reset" class="btn btn-primary w-25">Registrar</button>
-        <button routerLink="/" type="button" class="btn btn-warning w-25 ms-auto">Cancelar</button>
+        <button class="btn btn-primary w-25" [disabled]="registroForm.invalid">Registrar</button>
     </div>
 </form>

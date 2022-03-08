@@ -21,6 +21,7 @@ import { LibrosComponent } from './pages/libros/libros.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FormularioLoginComponent } from './component/formulario-login/formulario-login.component';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { FormsModule } from '@angular/forms';
       timeOut: 2500,
       positionClass: 'toast-top-left',
       preventDuplicates: true,
-    })
+    }),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
