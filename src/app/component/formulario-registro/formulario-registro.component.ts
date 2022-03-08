@@ -30,10 +30,10 @@ export class FormularioRegistroComponent implements OnInit {
         this.us.register(usuarioRegistro)
           .subscribe((respuesta: any) => {
             this.ns.mostrarSuccess(respuesta.message, 'Correcto');
-            this.us.usuario = usuarioRegistro;
-            this.us.usuario.password = '';
-            this.us.logueado = true;
-            this.router.navigate(['/libros'])
+            // this.us.usuario = usuarioRegistro;
+            // this.us.usuario.password = '';
+            // this.us.logueado = true;
+            this.router.navigate(['/login'])
           }, (err) => {
             this.ns.mostrarError(err.error.message, 'Error');
           })

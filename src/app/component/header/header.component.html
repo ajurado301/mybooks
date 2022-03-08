@@ -2,10 +2,10 @@
         <img class="imglogo" src="../../../assets/img/libros.png" alt="">
         <label class="textlogo">MyBooks</label>
         <nav class="navegacion">
-            <a routerLink="/home">Home</a>
+            <a *ngIf="!us.logueado" routerLink="/home">Home</a>
             <a *ngIf="us.logueado" routerLink="/libros">Libros</a>
             <a *ngIf="us.logueado" routerLink="/perfil">Perfil</a>
-            <a routerLink="/registro">Registro</a>
+            <a *ngIf="!us.logueado" routerLink="/registro">Registro</a>
             <a *ngIf="!us.logueado" routerLink="/login">Login</a>
             <a *ngIf="us.logueado" (click)="logout()" routerLink="/home">Logout</a>
         </nav>

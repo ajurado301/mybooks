@@ -15,5 +15,6 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.us.logueado = false;
+    
   }
 }

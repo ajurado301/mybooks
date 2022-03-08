@@ -20,6 +20,7 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { LibrosComponent } from './pages/libros/libros.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FormularioLoginComponent } from './component/formulario-login/formulario-login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,10 +38,15 @@ import { FormularioLoginComponent } from './component/formulario-login/formulari
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,    
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+      timeOut: 2500,
+      positionClass: 'toast-top-left',
+      preventDuplicates: true,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

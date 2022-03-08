@@ -2,7 +2,7 @@
     <div class="row libro p-4">
         <div class="col-9 d-flex justify-content-center">
             <div class="input-group text-center mb-3 w-25">
-                <input #idbuscar type="number" class="form-control text-center" placeholder="Buscar por id">
+                <input #idbuscar (keyup)="buscarLibroIntro($event.keyCode, idbuscar.value)" type="number" class="form-control text-center" placeholder="Buscar por id">
                 <a (click)="buscarLibro(idbuscar.value)" class="input-group-text"
                     style="text-decoration: none; cursor: pointer;">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -47,11 +47,14 @@
             </div>
             <form>
                 <input #tituloAgregar type="text" class="form-control text-center mb-3" placeholder="Título">
-                <input #tipoAgregar type="text" class="form-control text-center mb-3" placeholder="Tapa blanda/dura">
+                <select #tipoAgregar class="form-select text-center mb-3">
+                    <option value="" selected>Tipo</option>
+                    <option value="Tapa dura">Tapa dura</option>
+                    <option value="Tapa blanda">Tapa blanda</option>
+                </select>
                 <input #autorAgregar type="text" class="form-control text-center mb-3" placeholder="Autor">
                 <input #precioAgregar type="number" class="form-control text-center mb-3" placeholder="Precio">
                 <input #fotoAgregar type="text" class="form-control text-center mb-3" placeholder="foto">
-                <!-- <input #codigoAgregar type="number" class="form-control text-center mb-3" placeholder="Código libro"> -->
                 <button
                     (click)="agregarLibro(tituloAgregar.value, tipoAgregar.value, autorAgregar.value, precioAgregar.value, fotoAgregar.value)"
                     type="reset" class="btn btn-success w-75">Agregar Libro</button>
@@ -62,7 +65,12 @@
             </div>
             <form>
                 <input #tituloModificar type="text" class="form-control text-center mb-3" placeholder="Título" [value]="libroAmodificar.titulo">
-                <input #tipoModificar type="text" class="form-control text-center mb-3" placeholder="Tapa blanda/dura" [value]="libroAmodificar.tipo">
+                <!-- <input #tipoModificar type="text" class="form-control text-center mb-3" placeholder="Tapa blanda/dura" [value]="libroAmodificar.tipo"> -->
+                <select #tipoModificar name="tipoModificar" [(ngModel)]="libroAmodificar.tipo" class="form-select text-center mb-3">
+                    <option value="">Tipo</option>
+                    <option value="Tapa dura">Tapa dura</option>
+                    <option value="Tapa blanda">Tapa blanda</option>
+                </select>
                 <input #autorModificar type="text" class="form-control text-center mb-3" placeholder="Autor" [value]="libroAmodificar.autor">
                 <input #precioModificar type="number" class="form-control text-center mb-3" placeholder="Precio" [value]="libroAmodificar.precio">
                 <input #fotoModificar type="text" class="form-control text-center mb-3" placeholder="foto" [value]="libroAmodificar.foto">
