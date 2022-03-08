@@ -19,13 +19,16 @@ export class FormularioLoginComponent implements OnInit {
               private us: UsuarioService,
               private router: Router) {
     this.usuario = new Usuario(null, null, null, null, null);
+    // TODO: Quitar, es solo para logueado autmático
+    this.us.usuario = new Usuario('Ander', 'Jurado Rodríguez', 'ajurado301@gmail.com', '../../../assets/img/01.png', '', 1);
+    this.us.logueado = true;
+    this.router.navigate(['/libros'])
   }
 
   ngOnInit(): void {
   }
 
-  login(loginForm: NgForm): void {
-    this.usuario=loginForm.value;
+  login(): void {
     this.us.login(this.usuario)
     .subscribe((respuesta: any) => {
       if (respuesta.ok) {

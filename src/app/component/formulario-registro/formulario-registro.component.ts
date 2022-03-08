@@ -24,11 +24,10 @@ export class FormularioRegistroComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  registro(registroForm: NgForm): void {
-    if (registroForm.value.password != this.password2) {
+  registro(): void {
+    if (this.usuario.password != this.password2) {
       this.ns.mostrarError('Las contraseñas no coinciden', 'Error')
     } else {
-      this.usuario = registroForm.value
       this.us.register(this.usuario)
         .subscribe((respuesta: any) => {
           this.ns.mostrarSuccess(respuesta.message, 'Correcto');

@@ -45,27 +45,111 @@
             <div class="mx-4 mb-3 border-bottom border-3">
                 <h3>Agregar libro</h3>
             </div>
-            <form>
-                <input #tituloAgregar type="text" class="form-control text-center mb-3" placeholder="Título">
-                <select #tipoAgregar class="form-select text-center mb-3">
-                    <option value="" selected>Tipo</option>
-                    <option value="Tapa dura">Tapa dura</option>
-                    <option value="Tapa blanda">Tapa blanda</option>
-                </select>
-                <input #autorAgregar type="text" class="form-control text-center mb-3" placeholder="Autor">
-                <input #precioAgregar type="number" class="form-control text-center mb-3" placeholder="Precio">
-                <input #fotoAgregar type="text" class="form-control text-center mb-3" placeholder="foto">
-                <button
-                    (click)="agregarLibro(tituloAgregar.value, tipoAgregar.value, autorAgregar.value, precioAgregar.value, fotoAgregar.value)"
-                    type="reset" class="btn btn-success w-75">Agregar Libro</button>
+
+            <form #libroAgregarForm="ngForm" (ngSubmit)="agregarLibro()">
+
+                <div class="mb-3">
+                    <input type="text" class="form-control text-center" placeholder="Título" name="titulo" [(ngModel)]="libroAagregar.titulo" #tituloAgregar="ngModel"
+                           [ngClass]="{ 'is-invalid': (tituloAgregar.dirty || tituloAgregar.touched) && tituloAgregar.invalid }" required>
+                    <div class="invalid-feedback" *ngIf="(tituloAgregar.dirty || tituloAgregar.touched) && tituloAgregar.invalid">
+                        <small *ngIf="tituloAgregar.errors.required">Campo requerido</small>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <select class="form-select text-center" name="tipo" [(ngModel)]="libroAagregar.tipo" #tipoAgregar="ngModel"
+                            [ngClass]="{ 'is-invalid': (tipoAgregar.dirty || tipoAgregar.touched) && tipoAgregar.invalid }" required>
+                        <option value="" selected>Tipo</option>
+                        <option value="Tapa dura">Tapa dura</option>
+                        <option value="Tapa blanda">Tapa blanda</option>
+                    </select>
+                    <div class="invalid-feedback" *ngIf="(tipoAgregar.dirty || tipoAgregar.touched) && tipoAgregar.invalid">
+                        <small *ngIf="tipoAgregar.errors.required">Campo requerido</small>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <input type="text" class="form-control text-center" placeholder="Autor" name="autor" [(ngModel)]="libroAagregar.autor" #autorAgregar="ngModel"
+                           [ngClass]="{ 'is-invalid': (autorAgregar.dirty || autorAgregar.touched) && autorAgregar.invalid }" required>
+                    <div class="invalid-feedback" *ngIf="(autorAgregar.dirty || autorAgregar.touched) && autorAgregar.invalid">
+                        <small *ngIf="autorAgregar.errors.required">Campo requerido</small>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <input type="number" class="form-control text-center" placeholder="Precio" name="precio" [(ngModel)]="libroAagregar.precio" #precioAgregar="ngModel"
+                           [ngClass]="{ 'is-invalid': (precioAgregar.dirty || precioAgregar.touched) && precioAgregar.invalid }" required>
+                    <div class="invalid-feedback" *ngIf="(precioAgregar.dirty || precioAgregar.touched) && precioAgregar.invalid">
+                        <small *ngIf="precioAgregar.errors.required">Campo requerido</small>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <input type="text" class="form-control text-center" placeholder="foto" name="foto" [(ngModel)]="libroAagregar.foto" #fotoAgregar="ngModel"
+                           [ngClass]="{ 'is-invalid': (fotoAgregar.dirty || fotoAgregar.touched) && fotoAgregar.invalid }" required>
+                    <div class="invalid-feedback" *ngIf="(fotoAgregar.dirty || fotoAgregar.touched) && fotoAgregar.invalid">
+                        <small *ngIf="fotoAgregar.errors.required">Campo requerido</small>
+                    </div>
+                </div>
+                
+                <button class="btn btn-success w-75" [disabled]="libroAgregarForm.invalid">Agregar Libro</button>
             </form>
+
             <hr>
             <div class="mx-4 mb-3 border-bottom border-3">
                 <h3>Modificar libro</h3>
             </div>
-            <form>
+            <form #libroModificarForm="ngForm" (ngSubmit)="modificarLibro()">
+
+                <div class="mb-3">
+                    <input type="text" class="form-control text-center" placeholder="Título" name="titulo" [(ngModel)]="libroAmodificar.titulo" #tituloModificar="ngModel"
+                           [ngClass]="{ 'is-invalid': (tituloModificar.dirty || tituloModificar.touched) && tituloModificar.invalid }" required>
+                    <div class="invalid-feedback" *ngIf="(tituloModificar.dirty || tituloModificar.touched) && tituloModificar.invalid">
+                        <small *ngIf="tituloModificar.errors.required">Campo requerido</small>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <select class="form-select text-center" name="tipo" [(ngModel)]="libroAmodificar.tipo" #tipoModificar="ngModel"
+                            [ngClass]="{ 'is-invalid': (tipoModificar.dirty || tipoModificar.touched) && tipoModificar.invalid }" required>
+                        <option value="" selected>Tipo</option>
+                        <option value="Tapa dura">Tapa dura</option>
+                        <option value="Tapa blanda">Tapa blanda</option>
+                    </select>
+                    <div class="invalid-feedback" *ngIf="(tipoModificar.dirty || tipoModificar.touched) && tipoModificar.invalid">
+                        <small *ngIf="tipoModificar.errors.required">Campo requerido</small>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <input type="text" class="form-control text-center" placeholder="Autor" name="autor" [(ngModel)]="libroAmodificar.autor" #autorModificar="ngModel"
+                           [ngClass]="{ 'is-invalid': (autorModificar.dirty || autorModificar.touched) && autorModificar.invalid }" required>
+                    <div class="invalid-feedback" *ngIf="(autorModificar.dirty || autorModificar.touched) && autorModificar.invalid">
+                        <small *ngIf="autorModificar.errors.required">Campo requerido</small>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <input type="number" class="form-control text-center" placeholder="Precio" name="precio" [(ngModel)]="libroAmodificar.precio" #precioModificar="ngModel"
+                           [ngClass]="{ 'is-invalid': (precioModificar.dirty || precioModificar.touched) && precioModificar.invalid }" required>
+                    <div class="invalid-feedback" *ngIf="(precioModificar.dirty || precioModificar.touched) && precioModificar.invalid">
+                        <small *ngIf="precioModificar.errors.required">Campo requerido</small>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <input type="text" class="form-control text-center" placeholder="foto" name="foto" [(ngModel)]="libroAmodificar.foto" #fotoModificar="ngModel"
+                           [ngClass]="{ 'is-invalid': (fotoModificar.dirty || fotoModificar.touched) && fotoModificar.invalid }" required>
+                    <div class="invalid-feedback" *ngIf="(fotoModificar.dirty || fotoModificar.touched) && fotoModificar.invalid">
+                        <small *ngIf="fotoModificar.errors.required">Campo requerido</small>
+                    </div>
+                </div>
+                
+                <input type="number" class="form-control text-center mb-3" placeholder="Código libro" name="id_libro" [(ngModel)]="libroAmodificar.id_libro" #codigoModificar="ngModel" readonly>
+                <button class="btn btn-success w-75" [disabled]="libroModificarForm.invalid">Modificar Libro</button>
+            </form>
+            <!-- <form>
                 <input #tituloModificar type="text" class="form-control text-center mb-3" placeholder="Título" [value]="libroAmodificar.titulo">
-                <!-- <input #tipoModificar type="text" class="form-control text-center mb-3" placeholder="Tapa blanda/dura" [value]="libroAmodificar.tipo"> -->
                 <select #tipoModificar name="tipoModificar" [(ngModel)]="libroAmodificar.tipo" class="form-select text-center mb-3">
                     <option value="">Tipo</option>
                     <option value="Tapa dura">Tapa dura</option>
@@ -78,7 +162,7 @@
                 <button
                     (click)="modificarLibro(tituloModificar.value, tipoModificar.value, autorModificar.value, precioModificar.value, fotoModificar.value, codigoModificar.value)"
                     type="reset" class="btn btn-success w-75">Modificar Libro</button>
-            </form>
+            </form> -->
         </div>
     </div>
 </main>

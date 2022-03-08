@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Libro } from '../../models/libro';
 import { LibrosService } from '../../shared/libros.service';
 import { NotificacionService } from '../../shared/notificacion.service';
@@ -13,26 +13,27 @@ export class LibrosComponent implements OnInit {
 
   public libros: Libro[];
   public eliminar_id_libro: number;
+  public libroAagregar: Libro;
   public libroAmodificar: Libro;
 
   constructor(private ls: LibrosService, private ns: NotificacionService, private us: UsuarioService) { 
     this.libros = [];                
     this.buscarLibro(null);
-    this.libroAmodificar = new Libro(null, '', null, null, null, null)
+    this.libroAmodificar = new Libro(null, '', null, null, null, null);
+    this.libroAagregar = new Libro(null, '', null, null, null, null);
   }
-
+  
   ngOnInit(): void {
   }
-
-  agregarLibro(titulo: string, tipo: string, autor: string, precio: number, foto: string): void {
-    let libro = new Libro(titulo, tipo, autor, precio, foto);
-    libro.id_usuario = this.us.usuario.id_usuario;
-    this.ls.add(libro)
+  
+  agregarLibro(): void {
+    this.libroAagregar.id_usuario = this.us.usuario.id_usuario;
+    this.ls.add(this.libroAagregar)
     .subscribe((respuesta: any) => {
       if (respuesta.ok) {
+        this.libroAagregar.id_libro = respuesta.resultado.id_libro;
+        this.libros.push(this.libroAagregar);
         this.ns.mostrarSuccess(respuesta.message, 'Correcto');
-        libro.id_libro = respuesta.resultado.id_libro;
-        this.libros.push(libro);
       } else {
         this.ns.mostrarwWarning(respuesta.message, 'Advertencia');
       }
@@ -43,19 +44,15 @@ export class LibrosComponent implements OnInit {
   
   activarLibroAmodificar(libro: Libro): void {
     this.libroAmodificar = libro;
-    const $select = document.querySelector("#tipoModificar");
-    console.log($select);
   }
 
-  modificarLibro(titulo: string, tipo: string, autor: string, precio: number, foto: string, codigo: number): void {
-    let libro = new Libro(titulo, tipo, autor, precio, foto, codigo);
-    this.ls.edit(libro)
+  modificarLibro(): void {
+    this.ls.edit(this.libroAmodificar)
     .subscribe((respuesta: any) => {
       if (respuesta.ok) {
         this.ns.mostrarSuccess(respuesta.message, 'Correcto');
-        let indice = this.libros.findIndex((itemLibro) => { return  itemLibro.id_libro == libro.id_libro });
-        this.libros[indice] = libro;
-        this.libroAmodificar = new Libro(null, '', null, null, null, null)
+        let indice = this.libros.findIndex((itemLibro) => { return  itemLibro.id_libro == this.libroAmodificar.id_libro });
+        this.libros[indice] = this.libroAmodificar;
       } else {
         this.ns.mostrarwWarning(respuesta.message, 'Advertencia');
       }
