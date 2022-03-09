@@ -22,6 +22,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { FormularioLoginComponent } from './component/formulario-login/formulario-login.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CardComponent } from './component/card/card.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LibrosComponent,
     RefPipe,
     LoginComponent,
-    FormularioLoginComponent
+    FormularioLoginComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

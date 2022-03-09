@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { NotificacionService } from 'src/app/shared/notificacion.service';
 import { UsuarioService } from 'src/app/shared/usuario.service';
 import { Usuario } from '../../models/usuario';
+import { FuncionesService } from '../../shared/funciones.service';
 
 @Component({
   selector: 'app-formulario-login',
@@ -17,7 +17,8 @@ export class FormularioLoginComponent implements OnInit {
 
   constructor(private ns: NotificacionService,
               private us: UsuarioService,
-              private router: Router) {
+              private router: Router,
+              public fs: FuncionesService) {
     this.usuario = new Usuario(null, null, null, null, null);
     // TODO: Quitar, es solo para logueado autmático
     this.us.usuario = new Usuario('Ander', 'Jurado Rodríguez', 'ajurado301@gmail.com', '../../../assets/img/01.png', '', 1);

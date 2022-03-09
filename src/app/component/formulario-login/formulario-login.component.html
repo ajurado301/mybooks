@@ -5,8 +5,8 @@
     <div class="mb-2">
         <label for="correoLogin" class="form-label">Correo</label>
         <input id="correoLogin" type="email" class="form-control" name="correo" [(ngModel)]="usuario.correo" #correo="ngModel"
-               [ngClass]="{ 'is-invalid': (correo.dirty || correo.touched) && correo.invalid }" email required>
-        <div class="invalid-feedback" *ngIf="(correo.dirty || correo.touched) && correo.invalid">
+               [ngClass]="{ 'is-invalid': fs.campoInvalido(correo) }" email required>
+        <div class="invalid-feedback" *ngIf="fs.campoInvalido(correo)">
             <small *ngIf="correo.errors.required">Campo requerido</small>
             <small *ngIf="correo.errors.email">correo no válido</small>
         </div>
@@ -15,8 +15,8 @@
     <div class="mb-2">
         <label for="passwordLogin" class="form-label">Contraseña</label>
         <input id="passwordLogin" type="password" class="form-control" name="password" [(ngModel)]="usuario.password" #password="ngModel"
-               [ngClass]="{ 'is-invalid': (password.dirty || password.touched) && password.invalid }" required>
-        <div class="invalid-feedback" *ngIf="(password.dirty || password.touched) && password.invalid">
+               [ngClass]="{ 'is-invalid': fs.campoInvalido(correo) }" required>
+        <div class="invalid-feedback" *ngIf="fs.campoInvalido(correo)">
             <small *ngIf="password.errors.required">Campo requerido</small>
         </div>
     </div>

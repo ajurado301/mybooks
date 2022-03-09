@@ -1,0 +1,21 @@
+
+<div (click)="activarLibroAmodificar(libro)" class="card" style="width: 18rem; height: 30rem;">
+    <img [src]="libro.foto" onerror="this.src = '../../../assets/img/noimage.png';"
+         class="card-img-top" alt="Foto libro">
+    <div class="card-body text-dark pt-1">
+        <small class="my-0">{{libro.tipo}}</small>
+        <h5 class="card-title border-top border-success my-0 text-success">{{libro.titulo}}</h5>
+        <p class="card-text my-0"><b>Autor: </b>{{libro.autor}}</p>
+        <p class="card-text my-0">{{libro.id_libro | ref}}</p>
+        <h5 class="text-center mt-2 mb-1"><b>{{libro.precio}}€</b></h5>
+        <div class="d-flex">
+            <button type="button" class="btn" style="width: 80%;"
+                [ngClass]="even ? 'btn-primary' : 'btn-dark'">Comprar</button>
+            <button (click)="confirmarEliminar(libro.id_libro)" type="button"
+                class="btn btn-danger ms-auto" data-bs-toggle="modal"
+                data-bs-target="#eliminar-modal">
+                X
+            </button>
+        </div>
+    </div>
+</div>

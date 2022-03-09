@@ -3,7 +3,7 @@ import { Usuario } from '../../models/usuario';
 import { NotificacionService } from '../../shared/notificacion.service';
 import { UsuarioService } from '../../shared/usuario.service';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { FuncionesService } from '../../shared/funciones.service';
 
 @Component({
   selector: 'app-formulario-registro',
@@ -17,7 +17,8 @@ export class FormularioRegistroComponent implements OnInit {
 
   constructor(private ns: NotificacionService,
               private us: UsuarioService,
-              private router: Router) {
+              private router: Router,
+              public fs: FuncionesService) {
     this.usuario = new Usuario(null, null, null, null, null);
   }
 
